@@ -1,0 +1,10 @@
+<% const renderedBody = include('partials/detailTanaman-body', { 
+    tanaman, 
+}); %>
+
+<%- include('layouts/main', {
+    title: 'Detail Tanaman',
+    showSidebar: true,
+    active: 'dashboard',
+    body: renderedBody
+}) %>

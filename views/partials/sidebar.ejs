@@ -1,0 +1,39 @@
+<style>
+    .nav-link:hover {
+        background-color: white;
+        color: #198754 !important; /* warna hijau Bootstrap success */
+    }
+
+    .nav-link:hover i {
+        color: #198754 !important; /* ikon juga ikut berubah warna */
+    }
+</style>
+
+<div class="sidebar bg-success d-flex flex-column p-0" style="min-height: 100%; position: fixed; width: 280px;">
+    <!-- Logo -->
+    <div class="p-4 text-white">
+        <div class="d-flex align-items-center margin-right-2rem">
+            <img src="/img/logo.png" alt="HydroPlan" width="80" height="40" class="me-2">
+        </div>
+    </div>
+    
+    <!-- Navigation Menu -->
+    <nav class="flex-grow-1 margin-top-2rem">
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item">
+                <a class="nav-link text-white d-flex align-items-center py-3 px-4" 
+                   href="/dashboard">
+                    <i class="fas fa-tachometer-alt me-3"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white d-flex align-items-center py-3 px-4 <%= typeof active !== 'undefined' && active === 'history' ? 'active bg-white text-success' : '' %>" 
+                   href="/history">
+                    <i class="fas fa-history me-3"></i>
+                    Riwayat
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

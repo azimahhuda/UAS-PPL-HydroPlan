@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>
+        <%= title %>
+    </title>
+</head>
+
+<body>
+    <div class="auth-container">
+        <div class="left-panel">
+            <img src="../img/logo.png" alt="Logo" class="logo" />
+        </div>
+        <div class="right-panel">
+            <div class="form-wrapper">
+                <% if (messages.error && messages.error.length> 0) { %>
+                    <div class="flash-message" style="background-color:#FF8989;">
+                        <%= messages.error[0] %>
+                    </div>
+                    <% } %>
+                        <% if (messages.success && messages.success.length> 0) { %>
+                            <div class="flash-message success" style="background-color:#9FFF9B;">
+                                <%= messages.success[0] %>
+                            </div>
+                            <% } %>
+                                <h2 style="margin-left: 1rem;">Buat Akun Baru</h2>
+                                <form action="/register" method="post">
+                                    <div class="form-group">
+                                        <input type="text" name="name" id="name" placeholder="Nama" required
+                                            autocomplete="off" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" name="email" id="email" placeholder="Email" required
+                                            autocomplete="off" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="phone" id="phone" placeholder="No. Telepon" required
+                                            autocomplete="off" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" name="password" id="password" placeholder="Kata Sandi"
+                                            required />
+                                    </div>
+                                    <div
+                                        style="align-items: center; text-align: center; margin-left: 1rem; margin-top: 2rem; margin-bottom: 2rem;">
+                                        <button type="submit" class="submit-btn">Daftar</button>
+                                    </div>
+                                </form>
+                                <hr style="align-items: center; text-align: center; margin-left: 2rem;" />
+                                <p>Sudah Punya Akun? <a href="/login" style="font-weight: bold;">Masuk</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

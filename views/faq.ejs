@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        html {
+            box-sizing: content-box;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: content-box;
+            overflow-x: hidden;
+        }
+
+        main {
+            box-sizing: content-box;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title-header {
+            padding-top: 72px;
+            padding-bottom: 96px;
+            color: black;
+            background-image: url("faq-title-bg.png");
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title {
+            width: 500px;
+            font-size: 48px;
+            align-self: center;
+            text-align: center;
+            opacity: 30%;
+            margin: 0;
+        }
+
+        .intro-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .title-intro {
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .subtitle-intro {
+            font-size: 16px;
+            color: #42803f;
+            margin-bottom: 40px;
+        }
+
+        .dropdown-section {
+            display: flex;
+            flex-direction: column;
+            margin-left: 32px;
+            margin-right: 32px;
+            align-self: center;
+            width: 95%;
+
+        }
+
+        .buttons {
+            display: flex;
+            margin-left: 10%;
+            margin-right: 10%;
+            margin-top: 0;
+            margin-bottom: 0;
+            gap: 24px;
+            padding-left: 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-section {
+            padding-top: 8px;
+            padding-bottom: 8px;
+            padding-left: 20px;
+            padding-right: 20px;
+            text-align: center;
+        }
+
+        .btn-section:hover {
+            background-color: #dfae33;
+            border-radius: 20px;
+        }
+
+        details {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            padding-left: 32px;
+            padding-right: 32px;
+
+        }
+
+        details summary {
+            width: 100%;
+            font-size: 20px;
+            color: #42803f;
+            position: relative;
+            cursor: pointer;
+            font-weight: 300;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        details p {
+            font-size: 16px;
+            color: #CDD5E0;
+            margin: 0;
+            margin-top: 8px;
+            padding-bottom: 28px;
+        }
+
+        details[open] summary {
+            color: #F2F5F9;
+
+            .svg {
+                color: #97A3B6;
+            }
+        }
+
+        .svg-down {
+            display: none;
+        }
+
+        details[open] {
+            margin-bottom: 20px;
+
+            background-color: #37393d;
+            border-radius: 10px;
+
+            .svg-up {
+                display: none;
+            }
+
+            .svg-down {
+                display: block;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            body {
+                width: 100%;
+            }
+
+            .dropdown-section {
+                width: 746px;
+            }
+
+            .buttons {
+                padding: 0;
+                margin: 0;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr;
+                gap: 24px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class=title-header>
+            <h1 class="title">Frequently Asked Questions</h1>
+        </div>
+    </header>
+    <main>
+        <section class="dropdown-section">
+            <details>
+                <summary>Apa itu HydroPlan dan siapa yang cocok menggunakannya?
+                    <div class="svg">
+                        <div class="svg-up">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-chevron-down">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="svg-down">
+                            <svg class="test-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up">
+                                <polyline points="18 15 12 9 6 15"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </summary>
+                <p>HydroPlan adalah aplikasi web yang membantu pengguna merencanakan, memantau, dan mencatat kegiatan
+                    bercocok tanam hidroponik. Aplikasi ini dirancang untuk pemula yang baru mulai berkebun secara
+                    hidroponik maupun pengguna berpengalaman yang ingin lebih teratur dalam merawat tanamannya.</p>
+            </details>
+            <details open>
+                <summary>Apakah saya perlu koneksi internet untuk menggunakan HydroPlan?
+                    <div class="svg">
+                        <div class="svg-up">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-chevron-down">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="svg-down">
+                            <svg class="test-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up">
+                                <polyline points="18 15 12 9 6 15"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </summary>
+                <p>Ya, HydroPlan merupakan aplikasi berbasis web sehingga memerlukan koneksi internet untuk mengakses
+                    fitur-fitur seperti penjadwalan tanam, pengingat tugas harian, dan dokumentasi perkembangan tanaman.
+                </p>
+            </details>
+            <details open>
+                <summary>Bagaimana cara kerja pengingat harian di HydroPlan?
+                    <div class="svg">
+                        <div class="svg-up">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-chevron-down">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="svg-down">
+                            <svg class="test-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up">
+                                <polyline points="18 15 12 9 6 15"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </summary>
+                <p>Setelah pengguna menjadwalkan penanaman, HydroPlan akan secara otomatis mengatur pengingat harian
+                    berdasarkan kebutuhan tanaman, seperti pemberian nutrisi atau pengecekan air. Pengingat ini
+                    ditampilkan di dashboard harian pengguna agar tidak ada tugas yang terlewat.</p>
+            </details>
+            <details>
+                <summary>Apakah saya bisa melihat kembali data tanaman yang sudah dipanen?
+                    <div class="svg">
+                        <div class="svg-up">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="feather feather-chevron-down">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </div>
+                        <div class="svg-down">
+                            <svg class="test-svg" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up">
+                                <polyline points="18 15 12 9 6 15"></polyline>
+                            </svg>
+                        </div>
+                    </div>
+                </summary>
+                <p>Tentu. HydroPlan memiliki fitur Riwayat Tanam yang menyimpan dokumentasi dan perkembangan tanaman
+                    yang sudah dipanen. Ini berguna untuk melihat hasil sebelumnya dan memotivasi pengguna dalam menanam
+                    lebih banyak tanaman.</p>
+            </details>
+        </section>
+    </main>
+</body>
+
+</html>

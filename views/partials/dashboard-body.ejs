@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto px-4 mt-4">
+        <div class="row mt-4">
+            <!-- Left Column - Active Plants -->
+            <div class="col-lg-8">
+                <!-- Tanaman Aktif Section -->
+                <div class="flex justify-between items-center mb-4">
+                    <h4 class="text-2xl font-bold text-gray-800">Tanaman Aktif</h4>
+                    <a href="/tanaman/tambah" class="btn bg-yellow-400 text-white rounded-full px-5 py-2 hover:bg-yellow-500 transition">
+                        <i class="fas fa-plus mr-2"></i>
+                        Tambah
+                    </a>
+                </div>
+
+                <!-- Plants Grid -->
+                <div class="row">
+                    <% plants.forEach((plant, index) => { %>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100 bg-white rounded-lg shadow-md hover:shadow-lg transition">
+                            <div class="relative">
+                                <img
+                                    src="<%= plant.image %>"
+                                    class="card-img-top rounded-t-lg"
+                                    alt="<%= plant.name %>"
+                                    style="height: 200px; object-fit: cover"
+                                />
+                            </div>
+                            <div class="card-body p-4">
+                                <h5 class="text-lg font-bold text-gray-800"><%= plant.name %></h5>
+                                <p class="text-sm text-gray-600 mb-2"><%= plant.description %></p>
+                                <p class="text-sm text-gray-500 mb-2">
+                                    <% if (plant.status === 'upcoming') { %>
+                                        <span class="inline-block px-2 py-1 rounded-full bg-gray-100 text-gray-700 text-xs">Akan datang</span>
+                                    <% } else { %>
+                                        Hari ke-<%= plant.day %> dari <%= plant.totalDays %>
+                                    <% } %>
+                                </p>
+                                <a
+                                    href="/tanaman/detail/<%= plant._id %>"
+                                    class="btn border border-emerald-500 text-emerald-500 px-3 py-1 rounded hover:bg-emerald-500 hover:text-white transition text-sm"
+                                >
+                                    Detail Tanaman
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+                    <% if (plants.length === 0) { %>
+                    <div class="col-12">
+                        <div class="text-center py-8 bg-white rounded-lg shadow-md">
+                            <i class="fas fa-seedling text-gray-400 text-4xl mb-3"></i>
+                            <h5 class="text-lg text-gray-500 mt-3">Belum ada tanaman aktif</h5>
+                            <p class="text-sm text-gray-400 mb-4">
+                                Mulai menanam dengan menambahkan tanaman baru!
+                            </p>
+                            <a href="/tanaman/tambah" class="btn bg-emerald-500 text-white px-5 py-2 rounded hover:bg-emerald-600 transition">
+                                <i class="fas fa-plus mr-2"></i>
+                                Tambah Tanaman Pertama
+                            </a>
+                        </div>
+                    </div>
+                    <% } %>
+                </div>
+
+                <!-- Tugas Harian Section -->
+                <div class="mt-8">
+                    <h4 class="text-2xl font-bold text-gray-800 mb-4">Tugas Harian Tanaman</h4>
+                    <div class="row">
+                        <% dailyTasks.forEach(plantTask => { %>
+                        <div class="col-md-6 mb-4">
+                            <div class="card bg-white rounded-lg shadow-md">
+                                <div class="card-header bg-emerald-500 text-white p-3 rounded-t-lg">
+                                    <h6 class="text-base font-bold mb-0">
+                                        <%= plantTask.plant %>
+                                    </h6>
+                                </div>
+                                <div class="card-body p-4">
+                                    <% plantTask.tasks.forEach(task => { %>
+                                    <div class="form-check mb-2">
+                                        <label
+                                            class="form-check-label text-sm <%= task.completed ? 'line-through text-gray-400' : 'text-gray-700' %>"
+                                        >
+                                            <%= task.task %> 
+                                        </label>
+                                    </div>
+                                    <% }); %>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                        <% if (dailyTasks.length === 0) { %>
+                        <div class="col-12">
+                            <div class="text-center py-6 bg-white rounded-lg shadow-md">
+                                <i class="fas fa-tasks text-gray-400 text-3xl mb-3"></i>
+                                <p class="text-sm text-gray-500">Tidak ada tugas harian untuk hari ini.</p>
+                            </div>
+                        </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Timeline All Plants -->
+            <div class="col-lg-4">
+                <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                    <h4 class="text-xl font-bold text-[#42803f] mb-4 flex items-center">
+                        <i class="fas fa-calendar-alt mr-2 text-emerald-500"></i>
+                        Timeline Semua Tanaman
+                    </h4>
+                    <div class="space-y-6 max-h-[675px] overflow-y-auto pr-2">
+                        <% if (plants.length > 0) { %>
+                            <% plants.forEach(plant => { %>
+                                <div class="relative pl-6 border-l-2 border-emerald-200">
+                                    <h5 class="font-semibold text-lg text-emerald-600 mb-3 bg-emerald-50 py-2 px-3 rounded-lg">
+                                        <%= plant.name %>
+                                    </h5>
+                                    <div class="space-y-4">
+                                        <% if (plant.timeline && plant.timeline.length > 0) { %>
+                                            <% plant.timeline.forEach(stage => { %>
+                                                <div class="relative pb-4">
+                                                    <div class="absolute -left-[25px] top-1 w-4 h-4 rounded-full border-2 border-white 
+                                                        <%= stage.status === 'completed' ? 'bg-green-500' : stage.status === 'active' ? 'bg-blue-500' : 'bg-gray-500' %>"></div>
+                                                    <p class="text-sm text-gray-700">
+                                                        <span class="font-medium capitalize"><%= stage.name %></span> - <%= stage.startDate %>
+                                                        <span class="inline-block text-xs px-2 py-1 rounded-full ml-2
+                                                            <%= stage.status === 'completed' ? 'bg-green-100 text-green-700' : 
+                                                                stage.status === 'active' ? 'bg-blue-100 text-blue-700' : 
+                                                                'bg-gray-100 text-gray-700' %>">
+                                                            <%= stage.status === 'completed' ? 'Akan Datang' : 
+                                                                stage.status === 'active' ? 'Aktif' : 'Akan Datang' %>
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                            <% }) %>
+                                        <% } else { %>
+                                            <p class="text-sm text-gray-500 italic pl-2">Belum ada timeline untuk tanaman ini.</p>
+                                        <% } %>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        <% } else { %>
+                            <div class="text-center py-6">
+                                <i class="fas fa-seedling text-gray-400 text-3xl mb-2"></i>
+                                <p class="text-sm text-gray-500">Belum ada tanaman untuk ditampilkan.</p>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

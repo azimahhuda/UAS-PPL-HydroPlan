@@ -1,0 +1,134 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100%;
+}
+
+.hero-headline {
+  font-family: "Fraunces", serif;
+}
+
+.navbar {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar:hover {
+  color: #89b44b;
+}
+
+.btn-mulai {
+  padding: 1rem;
+  background-color: #dcd56b;
+  border: none;
+  border-radius: 15px;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-mulai:hover {
+  background-color: white;
+}
+
+.auth-container {
+  display: flex;
+  height: 100vh;
+}
+
+.left-panel {
+  flex: 1;
+  height: 98vh;
+  background-image: url("../img/login-bg.png");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 1rem;
+  margin-left: 1rem;
+}
+
+.left-panel .logo {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 120px;
+}
+
+.right-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+}
+
+.form-wrapper {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.form-wrapper h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.form-group {
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 16px;
+}
+
+.form-group input {
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  background-color: #f1f1f1;
+  border: none;
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-size: 14px;
+  box-shadow: none;   
+}
+
+.form-group input:focus {
+  background-color: #eaeaea;
+  box-shadow: none;
+  border: none;
+  outline: none;
+}
+
+.submit-btn {
+  font-family: "Poppins", sans-serif;
+  padding: 10px;
+  border-radius: 8px;
+  padding: 16px 20px;
+  background-color: #2e7d32;
+  color: #fff;
+  border: none;
+  font-weight: 600;
+}
+
+.form-wrapper p {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.form-wrapper a {
+  color: #2e7d32;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.flash-message {
+  background-color: #f8d7da;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
+  margin-left: 2rem;
+}

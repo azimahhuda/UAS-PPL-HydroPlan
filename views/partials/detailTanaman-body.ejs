@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Histori Tanaman</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-gray-100 font-sans">
+			<!-- Main Content -->
+			<div class="flex-1 p-6">
+
+				<div class="bg-emerald-100 p-6 rounded-lg">
+					<div class="flex items-center justify-between mb-4">
+						<div class="flex items-center">
+							<button
+								onclick="history.back()"
+								class="mr-2 text-gray-500 hover:text-gray-700"
+							>
+								<i class="fas fa-arrow-left"></i>
+							</button>
+							<h2 class="text-2xl font-bold"><%= tanaman.name %></h2>
+						</div>
+						<div class="flex items-center space-x-4">
+							<p class="text-sm text-gray-500">
+								Terakhir diupdate <%= tanaman.lastUpdated %>
+							</p>
+							<% if (tanaman.status !== 'completed') { %>
+							<button
+								onclick="completePlant('<%= tanaman._id %>')"
+								id="completeBtn"
+								class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 flex items-center text-sm"
+								aria-label="Tandai tanaman sebagai selesai"
+							>
+								<i class="fas fa-check mr-2"></i> Selesai
+							</button>
+							<% } %>
+						</div>
+					</div>
+					<p class="text-gray-500 mb-4">
+						<% if (tanaman.currentDay <= 0) { %> Akan mulai <% } else { %> Hari
+						ke-<%= tanaman.currentDay %> dari <%= tanaman.totalDays %> hari <% }
+						%> <% if (tanaman.status === 'completed') { %>
+						<span class="text-green-600 font-medium ml-2">(Selesai)</span>
+						<% } %>
+					</p>
+					<div class="border-b border-gray-200 pb-4 mb-4">
+						<div class="flex space-x-4 overflow-x-auto" id="gallery">
+							<% if (tanaman.gallery && tanaman.gallery.length > 0) { %> <%
+							tanaman.gallery.forEach(image => { %>
+							<img
+								alt="Plant image"
+								class="rounded-xl w-48 h-32 object-cover"
+								src="<%= image.url %>"
+								width="250"
+							/>
+							<% }) %> <% } else { %>
+							<p class="text-gray-500">Tidak ada gambar di galeri.</p>
+							<% } %>
+						</div>
+					</div>
+					<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+						<!-- Log Perkembangan -->
+						<div class="bg-white p-4 rounded-lg shadow">
+							<div class="flex justify-between items-center mb-4">
+								<h3 class="font-bold">Log Perkembangan</h3>
+								<button
+									onclick="openLogsModal()"
+									class="text-emerald-500 hover:text-[#42803f] text-sm flex items-center"
+								>
+									<i class="fas fa-eye mr-1"></i> Lihat Semua Log
+								</button>
+							</div>
+							<% if (tanaman.logCurrent && tanaman.logCurrent.length > 0) { %>
+							<% tanaman.logCurrent.forEach((log, index) => { %>
+							<div class="mb-4 p-3 border rounded-lg">
+								<p class="text-gray-500 text-sm mb-2"><%= log.date %></p>
+								<div class="flex items-center justify-between mb-2">
+									<span class="font-medium text-sm"><%= log.log %>:</span>
+									<% if (tanaman.status !== 'completed') { %>
+									<button
+										onclick="editLog(<%= index %>)"
+										id="edit-btn-<%= index %>"
+										class="text-blue-500 hover:text-blue-700 text-xs"
+									>
+										<i class="fas fa-edit"></i> Edit
+									</button>
+									<% } %>
+								</div>
+								<!-- Display Mode -->
+								<div id="display-<%= index %>" class="log-display">
+									<span class="text-gray-700" id="log-value-<%= index %>"
+										><%= log.value || '' %></span
+									>
+								</div>
+								<!-- Edit Mode -->
+								<% if (tanaman.status !== 'completed') { %>
+								<div id="edit-<%= index %>" class="log-edit hidden">
+									<div class="flex flex-col space-y-2">
+										<input
+											type="text"
+											id="input-<%= index %>"
+											value="<%= log.value || '' %>"
+											class="border border-gray-300 rounded px-2 py-1 text-sm w-full"
+											placeholder="Masukkan nilai untuk <%= log.log.toLowerCase() %>..."
+										/>
+										<div class="flex space-x-2">
+											<button
+												onclick="saveLog(<%= index %>, <%= log.stageIndex || 0 %>, <%= log.logIndex || 0 %>)"
+												id="save-btn-<%= index %>"
+												data-stage-index="<%= log.stageIndex || 0 %>"
+												data-log-index="<%= log.logIndex || 0 %>"
+												class="bg-green-500 text-white px-3 py-1 rounded text-xs hover:bg-green-600 flex items-center"
+											>
+												<i class="fas fa-save mr-1"></i> Simpan
+											</button>
+											<button
+												onclick="cancelEdit(<%= index %>)"
+												class="bg-gray-500 text-white px-3 py-1 rounded text-xs hover:bg-gray-600"
+											>
+												<i class="fas fa-times mr-1"></i> Batal
+											</button>
+										</div>
+									</div>
+								</div>
+								<!-- Loading Spinner -->
+								<div id="loading-<%= index %>" class="hidden flex items-center">
+									<i class="fas fa-spinner fa-spin text-blue-500"></i>
+									<span class="text-sm text-gray-500 ml-2">Menyimpan...</span>
+								</div>
+								<% } %>
+							</div>
+							<% }) %> <% } else { %>
+							<p class="text-gray-500 mb-2">
+								Belum ada log perkembangan untuk tahap saat ini.
+							</p>
+							<% } %>
+						</div>
+						<!-- Checklist Hari Ini -->
+						<div class="bg-white p-4 rounded-lg shadow">
+							<h3 class="font-bold mb-2">Checklist Hari Ini</h3>
+							<ul class="list-none space-y-3">
+								<% if (tanaman.dailyTasks && tanaman.dailyTasks.length > 0) { %>
+								<% tanaman.dailyTasks.forEach((task, index) => { %>
+								<li class="flex items-start">
+									<% if (tanaman.status !== 'completed') { %> <input class="mr-3
+									mt-1 task-checkbox" type="checkbox" id="task-<%= index %>"
+									data-task-index="<%= index %>" data-plant-id="<%= tanaman._id
+									%>" <%= task.completed ? 'checked' : '' %>
+									onchange="updateTask(this)"/> <% } else { %> <input
+									class="mr-3 mt-1" type="checkbox" <%= task.completed ?
+									'checked' : '' %> disabled/> <% } %>
+									<span
+										id="task-<%= index %>-text"
+										class="<%= task.completed ? 'line-through text-gray-500' : '' %>"
+									>
+										<%= task.task %>
+									</span>
+									<% if (tanaman.status !== 'completed') { %>
+									<i
+										class="fas fa-spinner fa-spin ml-2 hidden"
+										data-spinner-id="<%= index %>"
+									></i>
+									<% } %>
+								</li>
+								<% }) %> <% } else { %>
+								<li class="text-gray-500">Tidak ada tugas untuk hari ini.</li>
+								<% } %>
+							</ul>
+							<!-- Form Upload Gambar -->
+							<% if (tanaman.status !== 'completed') { %>
+							<form
+								id="uploadForm"
+								action="/tanaman/detail/<%= tanaman._id %>/upload"
+								method="POST"
+								enctype="multipart/form-data"
+								class="mt-4"
+							>
+								<div class="flex flex-col space-y-2">
+									<input
+										type="file"
+										name="image"
+										accept="image/*"
+										required
+										class="border border-gray-300 rounded px-2 py-1"
+									/>
+									<button
+										type="submit"
+										id="uploadBtn"
+										class="bg-emerald-500 text-white px-3 py-1 rounded hover:bg-emerald-600 flex items-center"
+									>
+										<i class="fas fa-upload mr-1"></i> Upload Gambar
+									</button>
+									<div id="uploadSpinner" class="hidden items-center">
+										<i class="fas fa-spinner fa-spin text-emerald-500"></i>
+										<span class="text-sm text-gray-500 ml-2"
+											>Mengunggah...</span
+										>
+									</div>
+									<p
+										id="uploadMessage"
+										class="text-sm text-gray-500 hidden"
+									></p>
+								</div>
+							</form>
+							<% } %>
+						</div>
+						<!-- Timeline -->
+						<div class="bg-white p-4 rounded-lg shadow">
+							<h3 class="font-bold mb-2">Timeline</h3>
+							<div class="space-y-2">
+								<% tanaman.timeline.forEach(stage => { %>
+								<p class="text-sm">
+									<span
+										class="inline-block w-3 h-3 rounded-full mr-2 <%= stage.status === 'completed' ? 'bg-green-500' : stage.status === 'active' ? 'bg-blue-500' : 'bg-gray-500' %>"
+									></span>
+									<%= stage.name %> - <%= stage.startDate %> (<%= stage.status
+									=== 'completed' ? 'Selesai' : stage.status === 'active' ?
+									'Aktif' : 'Akan Datang' %>)
+								</p>
+								<% }) %>
+							</div>
+						</div>
+					</div>
+					<!-- Tips Hari Ini -->
+					<div class="mt-6">
+						<h3 class="font-bold mb-2">Tips Hari Ini</h3>
+						<ul class="list-disc list-inside">
+							<% if (tanaman.tips && tanaman.tips.length > 0) { %> <%
+							tanaman.tips.forEach(tip => { %>
+							<li class="text-gray-500"><%= tip %></li>
+							<% }) %> <% } else { %>
+							<li class="text-gray-500">Tidak ada tips untuk hari ini.</li>
+							<% } %>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modal untuk Semua Log -->
+		<div
+			id="logsModal"
+			class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50"
+		>
+			<div
+				class="bg-white rounded-lg w-full max-w-2xl p-6 max-h-[80vh] overflow-y-auto"
+			>
+				<div class="flex justify-between items-center mb-4">
+					<h3 class="text-xl font-bold text-[#42803f]">
+						Semua Log Perkembangan
+					</h3>
+					<button
+						onclick="closeLogsModal()"
+						class="text-gray-500 hover:text-gray-700"
+					>
+						<i class="fas fa-times text-xl"></i>
+					</button>
+				</div>
+				<div class="space-y-4">
+					<% if (tanaman.logs && tanaman.logs.length > 0) { %> <%
+					tanaman.logs.forEach(log => { %>
+					<div class="p-3 border rounded-lg">
+						<p class="text-gray-500 text-sm mb-1"><%= log.date %></p>
+						<p class="font-medium text-sm"><%= log.stage %>: <%= log.log %></p>
+						<p class="text-gray-700 text-sm"><%= log.value || '' %></p>
+					</div>
+					<% }) %> <% } else { %>
+					<p class="text-gray-500 text-center">Belum ada log perkembangan.</p>
+					<% } %>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			// Task update function
+			async function updateTask(checkbox) {
+				if ("<%= tanaman.status %>" === "completed") return; // Prevent updates if completed
+				const taskIndex = parseInt(checkbox.dataset.taskIndex);
+				const plantId = checkbox.dataset.plantId;
+				const isChecked = checkbox.checked;
+				const spinner = document.querySelector(
+					`[data-spinner-id="${taskIndex}"]`
+				);
+				const taskText = document.getElementById(`task-${taskIndex}-text`);
+
+				spinner.classList.remove("hidden");
+				checkbox.disabled = true;
+
+				try {
+					const response = await fetch(`/tanaman/detail/${plantId}/checklist`, {
+						method: "PUT",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify({ taskIndex, completed: isChecked }),
+					});
+
+					if (!response.ok) {
+						const errorData = await response.json();
+						throw new Error(
+							errorData.error || `HTTP error! Status: ${response.status}`
+						);
+					}
+
+					if (taskText) {
+						taskText.classList.toggle("line-through", isChecked);
+						taskText.classList.toggle("text-gray-500", isChecked);
+					}
+
+					alert("Task berhasil diperbarui!");
+					checkbox.disabled = false;
+				} catch (error) {
+					console.error("Error updating task:", error);
+					checkbox.checked = !isChecked;
+					alert(`Gagal memperbarui task: ${error.message}`);
+					checkbox.disabled = false;
+				} finally {
+					spinner.classList.add("hidden");
+				}
+			}
+
+			// Log edit functions
+			function editLog(index) {
+				if ("<%= tanaman.status %>" === "completed") return; // Prevent editing if completed
+
+				try {
+					const displayElement = document.getElementById(`display-${index}`);
+					const editElement = document.getElementById(`edit-${index}`);
+					const editBtn = document.getElementById(`edit-btn-${index}`);
+					const inputElement = document.getElementById(`input-${index}`);
+
+					if (!displayElement || !editElement || !editBtn || !inputElement) {
+						console.error(`Element not found for index ${index}`);
+						alert("Gagal memuat form edit. Silakan coba lagi.");
+						return;
+					}
+
+					displayElement.classList.add("hidden");
+					editElement.classList.remove("hidden");
+					editBtn.classList.add("hidden");
+					inputElement.value =
+						document.getElementById(`log-value-${index}`).textContent || "";
+					inputElement.focus();
+				} catch (error) {
+					console.error("Error in editLog:", error);
+					alert("Terjadi kesalahan saat membuka form edit.");
+				}
+			}
+
+			function cancelEdit(index) {
+				try {
+					const displayElement = document.getElementById(`display-${index}`);
+					const editElement = document.getElementById(`edit-${index}`);
+					const editBtn = document.getElementById(`edit-btn-${index}`);
+					const inputElement = document.getElementById(`input-${index}`);
+
+					if (!displayElement || !editElement || !editBtn || !inputElement) {
+						console.error(`Element not found for index ${index}`);
+						return;
+					}
+
+					displayElement.classList.remove("hidden");
+					editElement.classList.add("hidden");
+					editBtn.classList.remove("hidden");
+					inputElement.value =
+						document.getElementById(`log-value-${index}`).textContent || "";
+				} catch (error) {
+					console.error("Error in cancelEdit:", error);
+					alert("Terjadi kesalahan saat membatalkan edit.");
+				}
+			}
+
+			async function saveLog(index, stageIndex, logIndex) {
+				if ("<%= tanaman.status %>" === "completed") {
+					console.warn("Cannot save log: Plant is completed");
+					return;
+				}
+
+				const plantId = "<%= tanaman._id %>";
+				const inputElement = document.getElementById(`input-${index}`);
+				const newValue = inputElement ? inputElement.value.trim() : "";
+
+				if (!inputElement) {
+					console.error(`Input element not found for index ${index}`);
+					alert("Gagal menemukan input. Silakan coba lagi.");
+					return;
+				}
+
+				if (!newValue) {
+					alert("Nilai tidak boleh kosong!");
+					inputElement.focus();
+					return;
+				}
+
+				const editElement = document.getElementById(`edit-${index}`);
+				const loadingElement = document.getElementById(`loading-${index}`);
+				const displayElement = document.getElementById(`display-${index}`);
+				const editBtn = document.getElementById(`edit-btn-${index}`);
+
+				if (!editElement || !loadingElement || !displayElement || !editBtn) {
+					console.error(`UI element not found for index ${index}`);
+					alert("Gagal memuat elemen UI. Silakan coba lagi.");
+					return;
+				}
+
+				editElement.classList.add("hidden");
+				loadingElement.classList.remove("hidden");
+
+				try {
+					const response = await fetch(`/tanaman/detail/${plantId}/log`, {
+						method: "PUT",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify({ stageIndex, logIndex: index, value: newValue }),
+					});
+
+					const responseData = await response.json();
+
+					if (!response.ok) {
+						throw new Error(
+							responseData.error || `HTTP error! Status: ${response.status}`
+						);
+					}
+
+					document.getElementById(`log-value-${index}`).textContent = newValue;
+					alert("Log berhasil diperbarui!");
+					displayElement.classList.remove("hidden");
+					editBtn.classList.remove("hidden");
+
+					window.location.href = "/tanaman/detail/" + plantId; // Refresh page to reflect changes
+				} catch (error) {
+					console.error("Error updating log:", error);
+					alert(`Gagal memperbarui log: ${error.message}`);
+					editElement.classList.remove("hidden");
+				} finally {
+					loadingElement.classList.add("hidden");
+				}
+			}
+
+			// Keyboard support for log editing
+			document.addEventListener("keydown", function (event) {
+				if ("<%= tanaman.status %>" === "completed") return;
+				if (event.target.id && event.target.id.startsWith("input-")) {
+					const index = event.target.id.split("-")[1];
+					if (event.key === "Enter") {
+						event.preventDefault();
+						const saveBtn = document.getElementById(`save-btn-${index}`);
+						const stageIndex = saveBtn
+							? parseInt(saveBtn.dataset.stageIndex) || 0
+							: 0;
+						const logIndex = saveBtn
+							? parseInt(saveBtn.dataset.logIndex) || 0
+							: 0;
+						saveLog(index, stageIndex, logIndex);
+					} else if (event.key === "Escape") {
+						event.preventDefault();
+						cancelEdit(index);
+					}
+				}
+			});
+
+			// Complete plant function
+			async function completePlant(plantId) {
+				if ("<%= tanaman.status %>" === "completed") return; // Prevent action if already completed
+				const completeBtn = document.getElementById("completeBtn");
+				const completeSpinner = document.getElementById("completeSpinner");
+
+				try {
+					const response = await fetch(`/tanaman/detail/${plantId}/complete`, {
+						method: "PUT",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify({ status: "completed" }),
+					});
+
+					if (!response.ok) {
+						const errorData = await response.json();
+						throw new Error(
+							errorData.error || `HTTP error! Status: ${response.status}`
+						);
+					}
+
+					alert("Tanaman telah ditandai sebagai selesai!");
+					window.location.href = "/dashboard";
+				} catch (error) {
+					alert(`Gagal menandai tanaman sebagai selesai: ${error.message}`);
+				}
+			}
+
+			// Modal functions
+			function openLogsModal() {
+				document.getElementById("logsModal").classList.remove("hidden");
+			}
+
+			function closeLogsModal() {
+				document.getElementById("logsModal").classList.add("hidden");
+			}
+
+			// Close modal on outside click
+			document
+				.getElementById("logsModal")
+				.addEventListener("click", function (event) {
+					if (event.target === this) {
+						closeLogsModal();
+					}
+				});
+		</script>
+	</body>
+</html>

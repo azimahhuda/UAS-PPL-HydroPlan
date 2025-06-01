@@ -1,0 +1,10 @@
+<% const renderedBody = include('partials/history-body', { 
+    plants, 
+}); %>
+
+<%- include('layouts/main', {
+    title: 'History',
+    showSidebar: true,
+    active: 'dashboard',
+    body: renderedBody
+}) %>

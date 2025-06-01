@@ -1,0 +1,753 @@
+[
+  {
+    "name": "Selada",
+    "duration": 30,
+    "image": "../img/selada.jpg",
+    "stages": [
+      {
+        "name": "pembibitan",
+        "duration": 5,
+        "logs": [
+          {
+            "log": "jumlah benih"
+          },
+          {
+            "log": "jumlah benih yang tumbuh"
+          }
+        ],
+        "tips": [
+          "Gunakan rockwool yang sudah dibasahi dengan pH air 5.5–6.5.",
+          "Simpan di tempat teduh dengan sirkulasi udara baik.",
+          "Jaga kelembaban media tetap stabil, jangan sampai kering."
+        ]
+      },
+      {
+        "name": "pindah tanam",
+        "duration": 3,
+        "logs": [
+          {
+            "log": "Jumlah bibit berhasil"
+          },
+          {
+            "log": "Media tanam yang digunakan"
+          }
+        ],
+        "tips": [
+          "Pindahkan saat tanaman memiliki 2–4 daun sejati.",
+          "Pastikan akar tidak rusak saat memindahkan bibit.",
+          "Gunakan netpot dan pastikan tanaman stabil."
+        ]
+      },
+      {
+        "name": "larutan nutrisi",
+        "duration": 5,
+        "logs": [
+          {
+            "log": "pH dan EC larutan nutrisi"
+          },
+          {
+            "log": "Volume nutrisi yang diberikan"
+          }
+        ],
+        "tips": [
+          "Gunakan nutrisi hidroponik AB mix dengan dosis ringan.",
+          "Jaga pH larutan antara 5.8–6.5.",
+          "Cek larutan setiap hari agar tidak kekurangan."
+        ]
+      },
+      {
+        "name": "penanaman",
+        "duration": 15,
+        "logs": [
+          {
+            "log": "Tinggi tanaman"
+          },
+          {
+            "log": "Jumlah daun"
+          }
+        ],
+        "tips": [
+          "Berikan cahaya 10–14 jam/hari (bisa menggunakan grow light).",
+          "Ganti larutan nutrisi setiap 7 hari.",
+          "Hindari percikan air ke daun untuk mencegah jamur."
+        ]
+      },
+      {
+        "name": "panen",
+        "duration": 2,
+        "logs": [
+          {
+            "log": "Berat tanaman"
+          },
+          {
+            "log": "Kondisi daun (layu, segar, dsb.)"
+          }
+        ],
+        "tips": [
+          "Panen saat daun lebat dan belum berbunga.",
+          "Gunakan gunting steril saat memotong akar.",
+          "Simpan hasil panen di tempat sejuk jika tidak langsung dikonsumsi."
+        ]
+      }
+    ],
+    "checklist": [
+      {
+        "day": 1,
+        "tasks": [
+          { "task": "Cek kelembaban rockwool", "completed": false },
+          { "task": "Semai benih", "completed": false },
+          { "task": "Foto bibit", "completed": false }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 2,
+        "tasks": [
+          { "task": "Cek kelembaban media", "completed": true },
+          { "task": "Semprot air pagi dan sore", "completed": true },
+          { "task": "Pantau pertumbuhan kecambah", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 3,
+        "tasks": [
+          { "task": "Cek kondisi benih (apakah sudah berkecambah)", "completed": true },
+          { "task": "Tambah air jika rockwool mulai mengering", "completed": true },
+          { "task": "Foto perkembangan kecambah", "completed": false }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 4,
+        "tasks": [
+          { "task": "Pantau jumlah benih yang tumbuh", "completed": true },
+          { "task": "Pastikan media tetap lembap", "completed": true },
+          { "task": "Simpan di tempat teduh dan hangat", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 5,
+        "tasks": [
+          { "task": "Catat jumlah bibit tumbuh", "completed": true },
+          { "task": "Siapkan media dan netpot untuk pindah tanam", "completed": true },
+          { "task": "Foto bibit terakhir sebelum pindah", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 6,
+        "tasks": [
+          { "task": "Pindahkan bibit ke netpot", "completed": true },
+          { "task": "Pastikan akar tidak rusak", "completed": true },
+          { "task": "Tuangkan larutan nutrisi ringan", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 7,
+        "tasks": [
+          { "task": "Cek adaptasi tanaman pasca pindah", "completed": true },
+          { "task": "Pantau posisi tanaman tetap tegak", "completed": true },
+          { "task": "Foto bibit setelah pindah", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 8,
+        "tasks": [
+          { "task": "Cek akar menembus netpot", "completed": true },
+          { "task": "Tambah air jika kurang", "completed": true },
+          { "task": "Catat jumlah bibit yang bertahan", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 9,
+        "tasks": [
+          { "task": "Cek dan catat pH & EC larutan", "completed": true },
+          { "task": "Tambah nutrisi jika perlu", "completed": true },
+          { "task": "Foto daun pertama yang muncul", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 10,
+        "tasks": [
+          { "task": "Pantau warna daun dan batang", "completed": true },
+          { "task": "Cek kondisi air (keruh atau bersih)", "completed": true },
+          { "task": "Tambah larutan jika kurang", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 11,
+        "tasks": [
+          { "task": "Bersihkan permukaan tanam dari lumut", "completed": true },
+          { "task": "Cek suhu air", "completed": true },
+          { "task": "Foto perkembangan", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 12,
+        "tasks": [
+          { "task": "Cek pertumbuhan akar", "completed": true },
+          { "task": "Pantau daun muda baru", "completed": true },
+          { "task": "Tambah larutan jika menguap", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 13,
+        "tasks": [
+          { "task": "Lakukan pencatatan tinggi tanaman", "completed": true },
+          { "task": "Cek pH harian", "completed": true },
+          { "task": "Foto keseluruhan tanaman", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 14,
+        "tasks": [
+          { "task": "Tambah nutrisi sesuai usia tanaman", "completed": true },
+          { "task": "Pantau pertumbuhan daun", "completed": true },
+          { "task": "Foto perkembangan tanaman", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 15,
+        "tasks": [
+          { "task": "Cek air (pH & EC)", "completed": true },
+          { "task": "Catat jumlah daun", "completed": true },
+          { "task": "Bersihkan daun dari debu", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 16,
+        "tasks": [
+          { "task": "Tambah air jika menguap", "completed": true },
+          { "task": "Pastikan tanaman mendapat cukup cahaya", "completed": true },
+          { "task": "Foto tampak atas", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 17,
+        "tasks": [
+          { "task": "Catat tinggi tanaman", "completed": true },
+          { "task": "Cek akar dari bawah netpot", "completed": true },
+          { "task": "Tambah larutan jika perlu", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 18,
+        "tasks": [
+          { "task": "Cek apakah daun mulai tumpang tindih", "completed": true },
+          { "task": "Pangkas daun bawah jika perlu", "completed": false },
+          { "task": "Foto detail daun", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 19,
+        "tasks": [
+          { "task": "Cek suhu dan kelembaban sekitar", "completed": true },
+          { "task": "Bersihkan sistem hidroponik", "completed": true },
+          { "task": "Pantau daun layu/janggal", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 20,
+        "tasks": [
+          { "task": "Tambah larutan segar jika diperlukan", "completed": true },
+          { "task": "Pantau pertumbuhan merata", "completed": true },
+          { "task": "Foto mingguan", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 21,
+        "tasks": [
+          { "task": "Ganti larutan nutrisi seluruhnya", "completed": true },
+          { "task": "Cek dan bersihkan reservoir air", "completed": true },
+          { "task": "Catat perubahan warna daun", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 22,
+        "tasks": [
+          { "task": "Tambah air bersih", "completed": true },
+          { "task": "Pastikan tanaman tidak roboh", "completed": true },
+          { "task": "Foto tampak samping", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 23,
+        "tasks": [
+          { "task": "Pantau perkembangan daun", "completed": true },
+          { "task": "Catat jumlah daun aktif", "completed": true },
+          { "task": "Bersihkan lumut atau kerak", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 24,
+        "tasks": [
+          { "task": "Tambah nutrisi ringan", "completed": true },
+          { "task": "Cek pH dan suhu air", "completed": true },
+          { "task": "Foto tanaman dari berbagai sisi", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 25,
+        "tasks": [
+          { "task": "Catat tinggi dan diameter batang", "completed": true },
+          { "task": "Bersihkan lingkungan sekitar tanaman", "completed": true },
+          { "task": "Pantau kelembaban udara", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 26,
+        "tasks": [
+          { "task": "Tambah air jika menguap", "completed": true },
+          { "task": "Cek pertumbuhan ujung daun", "completed": true },
+          { "task": "Foto kondisi sistem tanam", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 27,
+        "tasks": [
+          { "task": "Lakukan pengamatan akar", "completed": true },
+          { "task": "Cek sistem aerasi (jika ada)", "completed": true },
+          { "task": "Tambah nutrisi jika kurang", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 28,
+        "tasks": [
+          { "task": "Cek kesiapan panen awal", "completed": true },
+          { "task": "Catat berat sementara", "completed": true },
+          { "task": "Foto keseluruhan kebun mini", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 29,
+        "tasks": [
+          { "task": "Cek daun (warna, kelayakan panen)", "completed": true },
+          { "task": "Catat berat dan tinggi tanaman", "completed": true },
+          { "task": "Bersihkan tanaman sebelum dipotong", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 30,
+        "tasks": [
+          { "task": "Panen selada dengan alat bersih", "completed": false },
+          { "task": "Catat hasil panen (jumlah & berat total)", "completed": false },
+          { "task": "Foto panen terakhir dan simpan data log", "completed": false }
+        ],
+        "photo": ""
+      }
+    ]
+  },
+
+  {
+    "name": "Bayam",
+    "duration": 25,
+    "image": "../img/bayam.jpg",
+    "stages": [
+      {
+        "name": "pembibitan",
+        "duration": 4,
+        "logs": [
+          {
+            "log": "jumlah benih"
+          }
+        ],
+        "tips": [
+          "Gunakan rockwool yang sudah dibasahi dengan pH air 5.5–6.5",
+          "Simpan di tempat teduh dengan sirkulasi udara baik.",
+          "Jaga kelembaban media tetap stabil, jangan sampai kering."
+        ]
+      },
+      {
+        "name": "pindah tanam",
+        "duration": 2,
+        "logs": [
+          {
+            "log": "Jumlah bibit berhasil"
+          },
+          {
+            "log": "Media tanam yang digunakan"
+          }
+        ],
+        "tips": [
+          "Pindahkan saat tanaman memiliki 2–3 daun sejati.",
+          "Pastikan akar tidak rusak saat memindahkan bibit.",
+          "Gunakan netpot dan pastikan tanaman stabil."
+        ]
+      },
+      {
+        "name": "larutan nutrisi",
+        "duration": 4,
+        "logs": [
+          {
+            "log": "pH dan EC larutan nutrisi"
+          },
+          {
+            "log": "Volume nutrisi yang diberikan"
+          }
+        ],
+        "tips": [
+          "Gunakan nutrisi hidroponik AB mix dengan dosis ringan.",
+          "Jaga pH larutan antara 6.0–6.5 (bayam toleran pH sedikit tinggi)",
+          "Cek larutan setiap hari agar tidak kekurangan."
+        ]
+      },
+      {
+        "name": "penanaman",
+        "duration": 13,
+        "logs": [
+          {
+            "log": "Tinggi tanaman"
+          },
+          {
+            "log": "Jumlah daun"
+          }
+        ],
+        "tips": [
+          "Berikan cahaya 8–12 jam/hari",
+          "Ganti larutan nutrisi setiap 5-7 hari",
+          "Bayam tumbuh cepat, pantau pertumbuhan harian"
+        ]
+      },
+      {
+        "name": "panen",
+        "duration": 2,
+        "logs": [
+          {
+            "log": "Berat tanaman"
+          },
+          {
+            "log": "Kondisi daun (layu, segar, dsb.)"
+          }
+        ],
+        "tips": [
+          "Panen saat daun sudah cukup besar (15-20cm).",
+          "Gunakan gunting steril saat memotong.",
+          "Bayam bisa dipanen bertahap (cut and come again)."
+        ]
+      }
+    ],
+    "checklist": [
+      {
+        "day": 1,
+        "tasks": [
+          { "task": "Cek kelembaban rockwool", "completed": false },
+          { "task": "Semprot air", "completed": false },
+          { "task": "Pantau kecambah", "completed": false },
+          { "task": "Foto bibit", "completed": false }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 2,
+        "tasks": [
+          { "task": "Cek kelembaban rockwool", "completed": true },
+          { "task": "Semprot air", "completed": true },
+          { "task": "Pantau pertumbuhan kecambah", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 3,
+        "tasks": [
+          { "task": "Cek kondisi benih (apakah sudah berkecambah)", "completed": true },
+          { "task": "Tambah air jika rockwool mulai mengering", "completed": true },
+          { "task": "Foto perkembangan kecambah", "completed": false }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 4,
+        "tasks": [
+          { "task": "Pantau jumlah benih yang tumbuh", "completed": true },
+          { "task": "Pastikan media tetap lembap", "completed": true },
+          { "task": "Simpan di tempat teduh dan hangat", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 5,
+        "tasks": [
+          { "task": "Catat jumlah bibit tumbuh", "completed": true },
+          { "task": "Siapkan media dan netpot untuk pindah tanam", "completed": true },
+          { "task": "Foto bibit terakhir sebelum pindah", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 6,
+        "tasks": [
+          { "task": "Pindahkan bibit ke netpot", "completed": true },
+          { "task": "Pastikan akar tidak rusak", "completed": true },
+          { "task": "Tuangkan larutan nutrisi ringan", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 7,
+        "tasks": [
+          { "task": "Cek adaptasi tanaman pasca pindah", "completed": true },
+          { "task": "Pantau posisi tanaman tetap tegak", "completed": true },
+          { "task": "Foto bibit setelah pindah", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 8,
+        "tasks": [
+          { "task": "Cek akar menembus netpot", "completed": true },
+          { "task": "Tambah air jika kurang", "completed": true },
+          { "task": "Catat jumlah bibit yang bertahan", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 9,
+        "tasks": [
+          { "task": "Cek dan catat pH & EC larutan", "completed": true },
+          { "task": "Tambah nutrisi jika perlu", "completed": true },
+          { "task": "Foto daun pertama yang muncul", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 10,
+        "tasks": [
+          { "task": "Pantau warna daun dan batang", "completed": true },
+          { "task": "Cek kondisi air (keruh atau bersih)", "completed": true },
+          { "task": "Tambah larutan jika kurang", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 11,
+        "tasks": [
+          { "task": "Bersihkan permukaan tanam dari lumut", "completed": true },
+          { "task": "Cek suhu air", "completed": true },
+          { "task": "Foto perkembangan", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 12,
+        "tasks": [
+          { "task": "Cek pertumbuhan akar", "completed": true },
+          { "task": "Pantau daun muda baru", "completed": true },
+          { "task": "Tambah larutan jika menguap", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 13,
+        "tasks": [
+          { "task": "Lakukan pencatatan tinggi tanaman", "completed": true },
+          { "task": "Cek pH harian", "completed": true },
+          { "task": "Foto keseluruhan tanaman", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 14,
+        "tasks": [
+          { "task": "Tambah nutrisi sesuai usia tanaman", "completed": true },
+          { "task": "Pantau pertumbuhan daun", "completed": true },
+          { "task": "Foto perkembangan tanaman", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 15,
+        "tasks": [
+          { "task": "Cek air (pH & EC)", "completed": true },
+          { "task": "Catat jumlah daun", "completed": true },
+          { "task": "Bersihkan daun dari debu", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 16,
+        "tasks": [
+          { "task": "Tambah air jika menguap", "completed": true },
+          { "task": "Pastikan tanaman mendapat cukup cahaya", "completed": true },
+          { "task": "Foto tampak atas", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 17,
+        "tasks": [
+          { "task": "Catat tinggi tanaman", "completed": true },
+          { "task": "Cek akar dari bawah netpot", "completed": true },
+          { "task": "Tambah larutan jika perlu", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 18,
+        "tasks": [
+          { "task": "Cek apakah daun mulai tumpang tindih", "completed": true },
+          { "task": "Pangkas daun bawah jika perlu", "completed": false },
+          { "task": "Foto detail daun", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 19,
+        "tasks": [
+          { "task": "Cek suhu dan kelembaban sekitar", "completed": true },
+          { "task": "Bersihkan sistem hidroponik", "completed": true },
+          { "task": "Pantau daun layu/janggal", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 20,
+        "tasks": [
+          { "task": "Tambah larutan segar jika diperlukan", "completed": true },
+          { "task": "Pantau pertumbuhan merata", "completed": true },
+          { "task": "Foto mingguan", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 21,
+        "tasks": [
+          { "task": "Ganti larutan nutrisi seluruhnya", "completed": true },
+          { "task": "Cek dan bersihkan reservoir air", "completed": true },
+          { "task": "Catat perubahan warna daun", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 22,
+        "tasks": [
+          { "task": "Tambah air bersih", "completed": true },
+          { "task": "Pastikan tanaman tidak roboh", "completed": true },
+          { "task": "Foto tampak samping", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 23,
+        "tasks": [
+          { "task": "Pantau perkembangan daun", "completed": true },
+          { "task": "Catat jumlah daun aktif", "completed": true },
+          { "task": "Bersihkan lumut atau kerak", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 24,
+        "tasks": [
+          { "task": "Tambah nutrisi ringan", "completed": true },
+          { "task": "Cek pH dan suhu air", "completed": true },
+          { "task": "Foto tanaman dari berbagai sisi", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 25,
+        "tasks": [
+          { "task": "Catat tinggi dan diameter batang", "completed": true },
+          { "task": "Bersihkan lingkungan sekitar tanaman", "completed": true },
+          { "task": "Pantau kelembaban udara", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 26,
+        "tasks": [
+          { "task": "Tambah air jika menguap", "completed": true },
+          { "task": "Cek pertumbuhan ujung daun", "completed": true },
+          { "task": "Foto kondisi sistem tanam", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 27,
+        "tasks": [
+          { "task": "Lakukan pengamatan akar", "completed": true },
+          { "task": "Cek sistem aerasi (jika ada)", "completed": true },
+          { "task": "Tambah nutrisi jika kurang", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 28,
+        "tasks": [
+          { "task": "Cek kesiapan panen awal", "completed": true },
+          { "task": "Catat berat sementara", "completed": true },
+          { "task": "Foto keseluruhan kebun mini", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 29,
+        "tasks": [
+          { "task": "Cek daun (warna, kelayakan panen)", "completed": true },
+          { "task": "Catat berat dan tinggi tanaman", "completed": true },
+          { "task": "Bersihkan tanaman sebelum dipotong", "completed": true },
+          { "task": "Foto", "completed": true }
+        ],
+        "photo": ""
+      },
+      {
+        "day": 30,
+        "tasks": [
+          { "task": "Panen selada dengan alat bersih", "completed": false },
+          { "task": "Catat hasil panen (jumlah & berat total)", "completed": false },
+          { "task": "Foto panen terakhir dan simpan data log", "completed": false }
+        ],
+        "photo": ""
+      }
+    ]
+  }
+]
+
+

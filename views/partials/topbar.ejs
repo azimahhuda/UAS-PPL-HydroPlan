@@ -1,0 +1,42 @@
+<div class="topbar bg-light border-bottom py-3 px-4">
+    <div class="d-flex justify-content-between align-items-center">
+        <!-- Greeting -->
+        <div>
+            <h5 class="mb-0">Hello, <span class="text-warning fw-bold"><%= user ? user.name : 'User' %></span></h5>
+        </div>
+        
+        <!-- Right side with notifications and profile -->
+        <div class="d-flex align-items-center">
+            <!-- Profile Dropdown -->
+            <div class="dropdown">
+                <button class="btn btn-link p-0" type="button" data-bs-toggle="dropdown">
+                    <img src="/img/blankprofpict.jpg" 
+                         alt="Profile" 
+                         class="rounded-circle" 
+                         width="40" 
+                         height="40"
+                         style="object-fit: cover;">
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li>
+                        <a class="dropdown-item" href="/settings">
+                            <i class="fas fa-user-edit me-2"></i>
+                            Edit Profil
+                        </a>
+                    </li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li>
+                        <button class="dropdown-item text-danger" onclick="document.getElementById('logout-form').submit();">
+    <i class="fas fa-sign-out-alt me-2"></i>
+    Logout
+</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Hidden logout form -->
+<form id="logout-form" action="/logout" method="POST" style="display: none;">
+</form>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title><%= title %></title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav
+        style="position: fixed; top: 1.5rem; left: 3rem; right: 3rem; background-color: #33553C; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); border-radius: 12px; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000;">
+        <div style="display: flex; align-items: center; margin-left: 1rem;">
+            <img src="../img/logo.png" alt="Logo Aplikasi" style="height: 40px;">
+        </div>
+
+        <ul style="display: flex; gap: 2rem; list-style: none; margin-right: 1rem; padding: 0;">
+            <li><a class="navbar" href="/">Beranda</a></li>
+            <li><a class="navbar" href="/faq">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <!-- hero -->
+    <div class="hero-section d-flex"
+        style="background-image: url('../img/bg-landing-page.png'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 250vh; margin: 0; padding: 2rem; display: flex; flex-direction: row; align-items: flex-start; justify-content: space-around;">
+
+        <div style="flex: 1; color: white; padding-right: 2rem; margin-left: 124px; margin-top: 12rem;">
+            <h1 class="hero-headline" style="font-size: 3.5rem; margin-bottom: 1rem;">Mulai Kebun Hidroponik Pribadimu,
+                Tanpa Ribet!</h1>
+            <p style="font-size: 1.5rem; line-height: 1.4;">
+                Rencanakan, rawat, dan panen tanaman hidroponik dengan lebih teratur dan mudah.
+            </p>
+            <a href="/register"><button class="btn-mulai">Mulai Sekarang</button></a>
+        </div>
+
+        <div style="flex: 1; display: flex; justify-content: center; margin-left: 124px; margin-top: 8rem;">
+            <img src="../img/hero.png" alt="Gambar Hero" style="width: 26rem; height: auto;">
+        </div>
+    </div>
+
+    <!-- tujuan -->
+    <div class="tujuan-section"
+        style="padding: 2rem; display: flex; flex-direction: row; justify-content: space-between; margin-top: -70rem;">
+        <div style="flex: 1; display: flex; justify-content: center; margin-left: -2rem;">
+            <img src="../img/lettuce.png" style="width: 32rem; height: auto;">
+        </div>
+
+        <div style="flex: 1; color: black; padding-right: 2rem; margin-right: 5rem; margin-top: 3rem;">
+            <p style="font-size: 1.5rem; margin-bottom: 1rem; font-weight: bold;">Tanaman layu karena lupa menyiram?
+                Nutrisi sering terlambat ditambahkan? Tidak tahu estimasi panen dari tanaman yang kamu tanam</p>
+            <p style="font-size: 1.5rem; line-height: 1.4;">
+                HydroPlan adalah solusinya — aplikasi planner yang akan membuat aktivitas hidroponikmu lebih terstruktur
+                dan efisien.
+            </p>
+        </div>
+    </div>
+
+    <!-- fitur -->
+    <div style="display: flex; justify-content: space-around; align-items: center; padding: 2rem; margin-top: 8rem;">
+        <img src="../img/perencanaan-tanaman.png" alt="Gambar 1" style="width: 20rem; height: auto;">
+        <img src="../img/pengingat-harian.png" alt="Gambar 1" style="width: 20rem; height: auto; margin-left: -12rem;">
+        <img src="../img/informasi-tanaman.png" alt="Gambar 1" style="width: 20rem; height: auto; margin-left: -12rem;">
+        <img src="../img/riwayat.png" alt="Gambar 1" style="width: 20rem; height: auto; margin-left: -12rem;">
+    </div>
+
+    <!-- keuntungan -->
+    <div
+        style="background-image: url('../img/keuntungan.png'); background-size: cover; background-position: center; background-repeat: no-repeat; height: 100vh; display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; padding: 2rem; color: white; margin-top: 10rem;">
+        <h2 style="font-size: 3rem; font-weight: bold; margin-left: 2rem;">Kenapa memilih <br> Hydroplan?</h2>
+        <ul
+            style="list-style: none; padding: 0; margin-top: 3rem; line-height: 1.4 ; font-size: 1.8rem; margin-left: 17rem;">
+            <li>Hemat waktu dan lebih <br> terorganisir.</li>
+            <li style="margin-top: 5.5rem;"> Panen tepat waktu.</li>
+            <li style="margin-top: 5.1rem;">Mudah digunakan oleh <br>pemula dan penghobi.</li>
+            <li style="margin-top: 3.8rem;">Bisa digunakan di rumah <br>atau kebun kecil.</li>
+        </ul>
+    </div>
+    <footer style="background-color: #42803F; color: white; text-align: center; padding: 2rem 5rem; font-size: 0.9rem;">
+        © 2025 HydroPlan. All rights reserved.
+    </footer>
+</body>
+
+</html>

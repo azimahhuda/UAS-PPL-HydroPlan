@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Histori Tanaman</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Main Content -->
+    <div class="flex-1 p-6">
+      <header class="flex justify-between items-center mb-6">
+        <h1 class="text-2xl font-bold">Histori Tanaman</h1>
+      </header>
+      <div class="bg-emerald-100 p-6 rounded-lg">
+        <% if (plants && plants.length > 0) { %>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <% plants.forEach(plant => { %>
+              <a href="/tanaman/detail/<%= plant._id %>" class="block bg-white rounded-lg shadow hover:shadow-lg transition-shadow">
+                <img src="<%= plant.image %>" alt="<%= plant.name %>" class="w-full h-48 object-cover rounded-t-lg"/>
+                <div class="p-4">
+                  <h3 class="text-lg font-bold text-[#42803f]"><%= plant.name %></h3>
+                  <p class="text-sm text-gray-500 mt-1 truncate"><%= plant.description || 'Tidak ada deskripsi' %></p>
+                  <div class="mt-3 space-y-1">
+                    <p class="text-sm text-gray-600">
+                      <i class="fas fa-calendar-alt mr-2"></i> Mulai: <%= plant.startDate %>
+                    </p>
+                    <p class="text-sm text-gray-600">
+                      <i class="fas fa-clock mr-2"></i> Durasi: <%= plant.duration %> hari
+                    </p>
+                    <p class="text-sm text-green-600 font-medium">
+                      <i class="fas fa-check-circle mr-2"></i> Selesai
+                    </p>
+                  </div>
+                </div>
+              </a>
+            <% }) %>
+          </div>
+        <% } else { %>
+          <div class="text-center py-10">
+            <i class="fas fa-leaf text-4xl text-gray-400 mb-4"></i>
+            <p class="text-gray-500 text-lg">Belum ada tanaman yang telah selesai.</p>
+          </div>
+        <% } %>
+      </div>
+    </div>
+</body>
+</html>
