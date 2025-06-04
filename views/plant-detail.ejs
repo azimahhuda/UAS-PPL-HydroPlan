@@ -1,9 +1,5 @@
-<%- include('layouts/main', { 
-    title: plant.name + ' - Detail', 
-    showSidebar: true,
-    active: 'dashboard',
-    body: `
-<div class="row mt-4">
+<%- include('layouts/main', { title: plant.name + ' - Detail' , showSidebar: true, active: 'dashboard' , body: ` <div
+    class="row mt-4">
     <!-- Left Column -->
     <div class="col-lg-8">
         <!-- Plant Header -->
@@ -11,12 +7,14 @@
             <div class="card-body">
                 <div class="row align-items-center">
                     <div class="col-md-8">
-                        <h2 class="fw-bold text-success mb-1"><%= plant.name %></h2>
+                        <h2 class="fw-bold text-success mb-1">
+                            <%= plant.name %>
+                        </h2>
                         <p class="text-muted mb-2">
                             <i class="fas fa-calendar-alt me-2"></i>
                             Hari ke-<%= plant.currentDay %> dari <%= plant.totalDays %> | <%= currentDate %>
                         </p>
-                        
+
                     </div>
                     <div class="col-md-4 text-end">
                         <a href="/dashboard" class="btn btn-outline-secondary">
@@ -27,7 +25,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Plant Gallery -->
         <div class="card shadow-sm border-0 mb-4">
             <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
@@ -38,35 +36,34 @@
                 </button>
             </div>
             <div class="card-body">
-                <% if (plant.images && plant.images.length > 0) { %>
-                <div class="row">
-                    <% plant.images.forEach(image => { %>
-                    <div class="col-md-4 col-6 mb-3">
-                        <div class="position-relative">
-                            <img src="/images/plants/<%= image %>" 
-                                 class="img-fluid rounded shadow-sm" 
-                                 alt="<%= plant.name %>"
-                                 style="width: 100%; height: 200px; object-fit: cover; cursor: pointer;"
-                                 onclick="viewImage('/images/plants/<%= image %>')">
-                            <div class="position-absolute top-0 end-0 p-2">
-                                <span class="badge bg-dark bg-opacity-75">
-                                    Hari <%= plant.currentDay %>
-                                </span>
+                <% if (plant.images && plant.images.length> 0) { %>
+                    <div class="row">
+                        <% plant.images.forEach(image=> { %>
+                            <div class="col-md-4 col-6 mb-3">
+                                <div class="position-relative">
+                                    <img src="/images/plants/<%= image %>" class="img-fluid rounded shadow-sm"
+                                        alt="<%= plant.name %>"
+                                        style="width: 100%; height: 200px; object-fit: cover; cursor: pointer;"
+                                        onclick="viewImage('/images/plants/<%= image %>')">
+                                    <div class="position-absolute top-0 end-0 p-2">
+                                        <span class="badge bg-dark bg-opacity-75">
+                                            Hari <%= plant.currentDay %>
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                            <% }); %>
                     </div>
-                    <% }); %>
-                </div>
-                <% } else { %>
-                <div class="text-center py-4">
-                    <i class="fas fa-camera text-muted" style="font-size: 3rem;"></i>
-                    <h6 class="text-muted mt-3">Belum ada foto</h6>
-                    <p class="text-muted">Mulai dokumentasikan pertumbuhan tanaman Anda!</p>
-                </div>
-                <% } %>
+                    <% } else { %>
+                        <div class="text-center py-4">
+                            <i class="fas fa-camera text-muted" style="font-size: 3rem;"></i>
+                            <h6 class="text-muted mt-3">Belum ada foto</h6>
+                            <p class="text-muted">Mulai dokumentasikan pertumbuhan tanaman Anda!</p>
+                        </div>
+                        <% } %>
             </div>
         </div>
-        
+
         <!-- Daily Quote/Info -->
         <div class="card shadow-sm border-0 mb-4 border-start border-success border-4">
             <div class="card-body">
@@ -76,7 +73,9 @@
                     </div>
                     <div class="col-md-11">
                         <h6 class="fw-bold mb-2">Info Hari Ini</h6>
-                        <p class="mb-2"><%= plant.quote %></p>
+                        <p class="mb-2">
+                            <%= plant.quote %>
+                        </p>
                         <small class="text-muted">
                             <i class="fas fa-lightbulb me-1"></i>
                             Tips: <%= plant.tips %>
@@ -85,45 +84,44 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Daily Tasks -->
         <div class="card shadow-sm border-0 mb-4">
             <div class="card-header bg-white border-0">
                 <h5 class="mb-0 fw-bold">Tugas Harian</h5>
             </div>
             <div class="card-body">
-                <% if (dailyTasks && dailyTasks.length > 0) { %>
-                    <% dailyTasks.forEach((task, index) => { %>
-                    <div class="form-check mb-3 p-3 <%= task.completed ? 'bg-light' : 'bg-white' %> border rounded">
-                        <input class="form-check-input" 
-                               type="checkbox" 
-                               id="task<%= index %>"
-                               <%= task.completed ? 'checked' : '' %>
-                               onchange="toggleTask(this, <%= index %>)">
-                        <label class="form-check-label fw-bold <%= task.completed ? 'text-decoration-line-through text-muted' : '' %>" 
-                               for="task<%= index %>">
-                            <%= task.task %>
-                        </label>
-                        <% if (task.completed) { %>
-                        <div class="mt-1">
-                            <small class="text-success">
-                                <i class="fas fa-check-circle me-1"></i>
-                                Selesai
-                            </small>
+                <% if (dailyTasks && dailyTasks.length> 0) { %>
+                    <% dailyTasks.forEach((task, index)=> { %>
+                        <div class="form-check mb-3 p-3 <%= task.completed ? 'bg-light' : 'bg-white' %> border rounded">
+                            <input class="form-check-input" type="checkbox" id="task<%= index %>" <%=task.completed
+                                ? 'checked' : '' %>
+                            onchange="toggleTask(this, <%= index %>)">
+                                <label
+                                    class="form-check-label fw-bold <%= task.completed ? 'text-decoration-line-through text-muted' : '' %>"
+                                    for="task<%= index %>">
+                                    <%= task.task %>
+                                </label>
+                                <% if (task.completed) { %>
+                                    <div class="mt-1">
+                                        <small class="text-success">
+                                            <i class="fas fa-check-circle me-1"></i>
+                                            Selesai
+                                        </small>
+                                    </div>
+                                    <% } %>
                         </div>
-                        <% } %>
-                    </div>
-                    <% }); %>
-                <% } else { %>
-                <div class="text-center py-4">
-                    <i class="fas fa-tasks text-muted" style="font-size: 2rem;"></i>
-                    <h6 class="text-muted mt-3">Tidak ada tugas khusus hari ini</h6>
-                    <p class="text-muted">Tetap pantau kondisi tanaman Anda!</p>
-                </div>
-                <% } %>
+                        <% }); %>
+                            <% } else { %>
+                                <div class="text-center py-4">
+                                    <i class="fas fa-tasks text-muted" style="font-size: 2rem;"></i>
+                                    <h6 class="text-muted mt-3">Tidak ada tugas khusus hari ini</h6>
+                                    <p class="text-muted">Tetap pantau kondisi tanaman Anda!</p>
+                                </div>
+                                <% } %>
             </div>
         </div>
-        
+
         <!-- Growth Log -->
         <div class="card shadow-sm border-0">
             <div class="card-header bg-white border-0 d-flex justify-content-between align-items-center">
@@ -134,41 +132,43 @@
                 </button>
             </div>
             <div class="card-body">
-                <% if (growthLog && growthLog.length > 0) { %>
-                <div class="timeline">
-                    <% growthLog.forEach((log, index) => { %>
-                    <div class="timeline-item <%= index === 0 ? 'timeline-item-latest' : '' %>">
-                        <div class="timeline-marker bg-success"></div>
-                        <div class="timeline-content">
-                            <div class="d-flex justify-content-between align-items-start mb-2">
-                                <h6 class="fw-bold mb-1"><%= new Date(log.date).toLocaleDateString('id-ID') %></h6>
-                                <% if (index === 0) { %>
-                                <span class="badge bg-success">Terbaru</span>
-                                <% } %>
+                <% if (growthLog && growthLog.length> 0) { %>
+                    <div class="timeline">
+                        <% growthLog.forEach((log, index)=> { %>
+                            <div class="timeline-item <%= index === 0 ? 'timeline-item-latest' : '' %>">
+                                <div class="timeline-marker bg-success"></div>
+                                <div class="timeline-content">
+                                    <div class="d-flex justify-content-between align-items-start mb-2">
+                                        <h6 class="fw-bold mb-1">
+                                            <%= new Date(log.date).toLocaleDateString('id-ID') %>
+                                        </h6>
+                                        <% if (index===0) { %>
+                                            <span class="badge bg-success">Terbaru</span>
+                                            <% } %>
+                                    </div>
+                                    <p class="mb-2">
+                                        <%= log.note %>
+                                    </p>
+                                    <% if (log.image) { %>
+                                        <img src="/images/plants/<%= log.image %>" class="img-fluid rounded mt-2"
+                                            alt="Log <%= log.date %>" style="max-width: 200px; cursor: pointer;"
+                                            onclick="viewImage('/images/plants/<%= log.image %>')">
+                                        <% } %>
+                                </div>
                             </div>
-                            <p class="mb-2"><%= log.note %></p>
-                            <% if (log.image) { %>
-                            <img src="/images/plants/<%= log.image %>" 
-                                 class="img-fluid rounded mt-2" 
-                                 alt="Log <%= log.date %>"
-                                 style="max-width: 200px; cursor: pointer;"
-                                 onclick="viewImage('/images/plants/<%= log.image %>')">
-                            <% } %>
-                        </div>
+                            <% }); %>
                     </div>
-                    <% }); %>
-                </div>
-                <% } else { %>
-                <div class="text-center py-4">
-                    <i class="fas fa-clipboard-list text-muted" style="font-size: 2rem;"></i>
-                    <h6 class="text-muted mt-3">Belum ada log perkembangan</h6>
-                    <p class="text-muted">Mulai catat perkembangan tanaman Anda!</p>
-                </div>
-                <% } %>
+                    <% } else { %>
+                        <div class="text-center py-4">
+                            <i class="fas fa-clipboard-list text-muted" style="font-size: 2rem;"></i>
+                            <h6 class="text-muted mt-3">Belum ada log perkembangan</h6>
+                            <p class="text-muted">Mulai catat perkembangan tanaman Anda!</p>
+                        </div>
+                        <% } %>
             </div>
         </div>
     </div>
-    
+
     <!-- Right Column -->
     <div class="col-lg-4">
         <!-- Timeline/Stages -->
@@ -181,32 +181,37 @@
             </div>
             <div class="card-body p-0">
                 <div class="timeline-vertical">
-                    <% timeline.forEach((stage, index) => { %>
-                    <div class="timeline-stage <%= stage.status === 'active' ? 'timeline-stage-active' : stage.status === 'completed' ? 'timeline-stage-completed' : 'timeline-stage-upcoming' %>">
-                        <div class="timeline-stage-marker">
-                            <% if (stage.status === 'completed') { %>
-                                <i class="fas fa-check"></i>
-                            <% } else if (stage.status === 'active') { %>
-                                <i class="fas fa-play"></i>
-                            <% } else { %>
-                                <i class="fas fa-clock"></i>
-                            <% } %>
-                        </div>
-                        <div class="timeline-stage-content">
-                            <h6 class="fw-bold mb-1"><%= stage.stage %></h6>
-                            <small class="text-muted"><%= stage.date %></small>
-                            <% if (stage.status === 'active') { %>
-                            <div class="mt-1">
-                                <span class="badge bg-warning">Sedang Berlangsung</span>
+                    <% timeline.forEach((stage, index)=> { %>
+                        <div
+                            class="timeline-stage <%= stage.status === 'active' ? 'timeline-stage-active' : stage.status === 'completed' ? 'timeline-stage-completed' : 'timeline-stage-upcoming' %>">
+                            <div class="timeline-stage-marker">
+                                <% if (stage.status==='completed' ) { %>
+                                    <i class="fas fa-check"></i>
+                                    <% } else if (stage.status==='active' ) { %>
+                                        <i class="fas fa-play"></i>
+                                        <% } else { %>
+                                            <i class="fas fa-clock"></i>
+                                            <% } %>
                             </div>
-                            <% } %>
+                            <div class="timeline-stage-content">
+                                <h6 class="fw-bold mb-1">
+                                    <%= stage.stage %>
+                                </h6>
+                                <small class="text-muted">
+                                    <%= stage.date %>
+                                </small>
+                                <% if (stage.status==='active' ) { %>
+                                    <div class="mt-1">
+                                        <span class="badge bg-warning">Sedang Berlangsung</span>
+                                    </div>
+                                    <% } %>
+                            </div>
                         </div>
-                    </div>
-                    <% }); %>
+                        <% }); %>
                 </div>
             </div>
         </div>
-        
+
         <!-- Plant Stats -->
         <div class="card shadow-sm border-0">
             <div class="card-header bg-white border-0">
@@ -216,25 +221,33 @@
                 <div class="row text-center">
                     <div class="col-6 mb-3">
                         <div class="p-3 bg-success bg-opacity-10 rounded">
-                            <h3 class="text-success fw-bold mb-1"><%= plant.currentDay %></h3>
+                            <h3 class="text-success fw-bold mb-1">
+                                <%= plant.currentDay %>
+                            </h3>
                             <small class="text-muted">Hari Tanam</small>
                         </div>
                     </div>
                     <div class="col-6 mb-3">
                         <div class="p-3 bg-info bg-opacity-10 rounded">
-                            <h3 class="text-info fw-bold mb-1"><%= plant.totalDays %></h3>
+                            <h3 class="text-info fw-bold mb-1">
+                                <%= plant.totalDays %>
+                            </h3>
                             <small class="text-muted">Total Hari</small>
                         </div>
                     </div>
                     <div class="col-6 mb-3">
                         <div class="p-3 bg-warning bg-opacity-10 rounded">
-                            <h3 class="text-warning fw-bold mb-1"><%= plant.height %> cm</h3>
+                            <h3 class="text-warning fw-bold mb-1">
+                                <%= plant.height %> cm
+                            </h3>
                             <small class="text-muted">Tinggi Tanaman</small>
                         </div>
                     </div>
                     <div class="col-6 mb-3">
                         <div class="p-3 bg-danger bg-opacity-10 rounded">
-                            <h3 class="text-danger fw-bold mb-1"><%= plant.leafCount %></h3>
+                            <h3 class="text-danger fw-bold mb-1">
+                                <%= plant.leafCount %>
+                            </h3>
                             <small class="text-muted">Jumlah Daun</small>
                         </div>
                     </div>
@@ -242,98 +255,103 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
 
-<!-- Modal Tambah Foto -->
-<div class="modal fade" id="addPhotoModal" tabindex="-1" aria-labelledby="addPhotoModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <form id="addPhotoForm" enctype="multipart/form-data" method="POST" action="/plants/<%= plant._id %>/photos" class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addPhotoModalLabel">Tambah Foto Tanaman</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-      </div>
-      <div class="modal-body">
-          <div class="mb-3">
-              <label for="photoFile" class="form-label">Pilih Foto</label>
-              <input type="file" class="form-control" id="photoFile" name="photo" accept="image/*" required>
-          </div>
-          <div class="mb-3">
-              <label for="photoDescription" class="form-label">Deskripsi (Opsional)</label>
-              <textarea class="form-control" id="photoDescription" name="description" rows="3" placeholder="Tambahkan catatan untuk foto ini..."></textarea>
-          </div>
-      </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-          <button type="submit" class="btn btn-success">Simpan Foto</button>
-      </div>
-    </form>
-  </div>
-</div>
+    <!-- Modal Tambah Foto -->
+    <div class="modal fade" id="addPhotoModal" tabindex="-1" aria-labelledby="addPhotoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="addPhotoForm" enctype="multipart/form-data" method="POST" action="/plants/<%= plant._id %>/photos"
+                class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addPhotoModalLabel">Tambah Foto Tanaman</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="photoFile" class="form-label">Pilih Foto</label>
+                        <input type="file" class="form-control" id="photoFile" name="photo" accept="image/*" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="photoDescription" class="form-label">Deskripsi (Opsional)</label>
+                        <textarea class="form-control" id="photoDescription" name="description" rows="3"
+                            placeholder="Tambahkan catatan untuk foto ini..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-success">Simpan Foto</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-<!-- Modal Tambah Log -->
-<div class="modal fade" id="addLogModal" tabindex="-1" aria-labelledby="addLogModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <form id="addLogForm" enctype="multipart/form-data" method="POST" action="/plants/<%= plant._id %>/logs" class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addLogModalLabel">Tambah Log Perkembangan</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-      </div>
-      <div class="modal-body">
-          <div class="mb-3">
-              <label for="logNote" class="form-label">Catatan</label>
-              <textarea class="form-control" id="logNote" name="note" rows="4" placeholder="Tuliskan perkembangan tanaman..." required></textarea>
-          </div>
-          <div class="mb-3">
-              <label for="logImage" class="form-label">Foto (Opsional)</label>
-              <input type="file" class="form-control" id="logImage" name="image" accept="image/*">
-          </div>
-          <div class="mb-3">
-              <label for="logDate" class="form-label">Tanggal</label>
-              <input type="date" class="form-control" id="logDate" name="date" required value="<%= new Date().toISOString().substring(0,10) %>">
-          </div>
-      </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-          <button type="submit" class="btn btn-success">Simpan Log</button>
-      </div>
-    </form>
-  </div>
-</div>
+    <!-- Modal Tambah Log -->
+    <div class="modal fade" id="addLogModal" tabindex="-1" aria-labelledby="addLogModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="addLogForm" enctype="multipart/form-data" method="POST" action="/plants/<%= plant._id %>/logs"
+                class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addLogModalLabel">Tambah Log Perkembangan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="logNote" class="form-label">Catatan</label>
+                        <textarea class="form-control" id="logNote" name="note" rows="4"
+                            placeholder="Tuliskan perkembangan tanaman..." required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="logImage" class="form-label">Foto (Opsional)</label>
+                        <input type="file" class="form-control" id="logImage" name="image" accept="image/*">
+                    </div>
+                    <div class="mb-3">
+                        <label for="logDate" class="form-label">Tanggal</label>
+                        <input type="date" class="form-control" id="logDate" name="date" required
+                            value="<%= new Date().toISOString().substring(0,10) %>">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-success">Simpan Log</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
-<script>
-    function toggleTask(checkbox, index) {
-        const completed = checkbox.checked;
-        fetch('/plants/<%= plant._id %>/tasks/' + index, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ completed })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                const label = checkbox.nextElementSibling;
-                if (completed) {
-                    label.classList.add('text-decoration-line-through', 'text-muted');
-                    checkbox.parentElement.classList.add('bg-light');
-                } else {
-                    label.classList.remove('text-decoration-line-through', 'text-muted');
-                    checkbox.parentElement.classList.remove('bg-light');
-                }
-            } else {
-                alert('Gagal memperbarui tugas.');
-                checkbox.checked = !completed;
-            }
-        })
-        .catch(() => {
-            alert('Terjadi kesalahan jaringan.');
-            checkbox.checked = !completed;
-        });
-    }
+    <script>
+        function toggleTask(checkbox, index) {
+            const completed = checkbox.checked;
+            fetch('/plants/<%= plant._id %>/tasks/' + index, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ completed })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const label = checkbox.nextElementSibling;
+                        if (completed) {
+                            label.classList.add('text-decoration-line-through', 'text-muted');
+                            checkbox.parentElement.classList.add('bg-light');
+                        } else {
+                            label.classList.remove('text-decoration-line-through', 'text-muted');
+                            checkbox.parentElement.classList.remove('bg-light');
+                        }
+                    } else {
+                        alert('Gagal memperbarui tugas.');
+                        checkbox.checked = !completed;
+                    }
+                })
+                .catch(() => {
+                    alert('Terjadi kesalahan jaringan.');
+                    checkbox.checked = !completed;
+                });
+        }
 
-    function viewImage(src) {
-    const modalHtml = `
+        function viewImage(src) {
+            const modalHtml = `
         <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg">
                 <div class="modal-content bg-transparent border-0">
@@ -348,16 +366,16 @@
         </div>
     `;
 
-    // Tambahkan modal ke body dan tampilkan
-    const modalContainer = document.createElement('div');
-    modalContainer.innerHTML = modalHtml;
-    document.body.appendChild(modalContainer);
+            // Tambahkan modal ke body dan tampilkan
+            const modalContainer = document.createElement('div');
+            modalContainer.innerHTML = modalHtml;
+            document.body.appendChild(modalContainer);
 
-    const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
-    imageModal.show();
+            const imageModal = new bootstrap.Modal(document.getElementById('imageModal'));
+            imageModal.show();
 
-    // Hapus modal setelah ditutup
-    document.getElementById('imageModal').addEventListener('hidden.bs.modal', function () {
-        modalContainer.remove();
-    });
-}
+            // Hapus modal setelah ditutup
+            document.getElementById('imageModal').addEventListener('hidden.bs.modal', function () {
+                modalContainer.remove();
+            });
+        }

@@ -1,133 +1,124 @@
-<%- include('layouts/main', { 
-    title: 'Tambah Tanaman', 
-    showSidebar: true,
-    active: 'dashboard'
-}) %>
+<%- include('layouts/main', { title: 'Tambah Tanaman' , showSidebar: true, active: 'dashboard' }) %>
 
-<div class="row justify-content-center mt-4">
-    <div class="col-lg-8">
-        <div class="card shadow-sm border-0">
-            <div class="card-header bg-success text-white">
-                <h4 class="mb-0 fw-bold">
-                    <i class="fas fa-plus-circle me-2"></i>
-                    Tambah Tanaman Baru
-                </h4>
-            </div>
-            <div class="card-body p-4">
-                <form action="/add-plant" method="POST">
-                    <!-- Plant Type Selection -->
-                    <div class="mb-4">
-                        <label for="plantType" class="form-label fw-bold">Jenis Tanaman <span class="text-danger">*</span></label>
-                        <select class="form-select form-select-lg" id="plantType" name="plantType" required>
-                            <option value="">Pilih jenis tanaman yang ingin ditanam</option>
-                            <% plantTypes.forEach(plant => { %>
-                            <option value="<%= plant.id %>" data-duration="<%= plant.duration %>">
-                                <%= plant.name %> (± <%= plant.duration %> hari)
-                            </option>
-                            <% }); %>
-                        </select>
-                        <div class="form-text">Pilih tanaman yang sesuai dengan kondisi lingkungan Anda</div>
-                    </div>
-                    
-                    <!-- Start Date -->
-                    <div class="mb-4">
-                        <label for="startDate" class="form-label fw-bold">Tanggal Mulai Tanam <span class="text-danger">*</span></label>
-                        <input type="date" 
-                               class="form-control form-control-lg" 
-                               id="startDate" 
-                               name="startDate" 
-                               value="<%= new Date().toISOString().split('T')[0] %>"
-                               required>
-                        <div class="form-text">Tanggal dimulainya proses pembibitan</div>
-                    </div>
-                    
-                    <!-- Expected Harvest Date (Auto calculated) -->
-                    <div class="mb-4">
-                        <label class="form-label fw-bold">Perkiraan Panen</label>
-                        <div class="p-3 bg-light rounded">
-                            <div id="harvestInfo" class="text-muted">
-                                <i class="fas fa-info-circle me-2"></i>
-                                Pilih jenis tanaman untuk melihat perkiraan waktu panen
+    <div class="row justify-content-center mt-4">
+        <div class="col-lg-8">
+            <div class="card shadow-sm border-0">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0 fw-bold">
+                        <i class="fas fa-plus-circle me-2"></i>
+                        Tambah Tanaman Baru
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <form action="/add-plant" method="POST">
+                        <!-- Plant Type Selection -->
+                        <div class="mb-4">
+                            <label for="plantType" class="form-label fw-bold">Jenis Tanaman <span
+                                    class="text-danger">*</span></label>
+                            <select class="form-select form-select-lg" id="plantType" name="plantType" required>
+                                <option value="">Pilih jenis tanaman yang ingin ditanam</option>
+                                <% plantTypes.forEach(plant=> { %>
+                                    <option value="<%= plant.id %>" data-duration="<%= plant.duration %>">
+                                        <%= plant.name %> (± <%= plant.duration %> hari)
+                                    </option>
+                                    <% }); %>
+                            </select>
+                            <div class="form-text">Pilih tanaman yang sesuai dengan kondisi lingkungan Anda</div>
+                        </div>
+
+                        <!-- Start Date -->
+                        <div class="mb-4">
+                            <label for="startDate" class="form-label fw-bold">Tanggal Mulai Tanam <span
+                                    class="text-danger">*</span></label>
+                            <input type="date" class="form-control form-control-lg" id="startDate" name="startDate"
+                                value="<%= new Date().toISOString().split('T')[0] %>" required>
+                            <div class="form-text">Tanggal dimulainya proses pembibitan</div>
+                        </div>
+
+                        <!-- Expected Harvest Date (Auto calculated) -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Perkiraan Panen</label>
+                            <div class="p-3 bg-light rounded">
+                                <div id="harvestInfo" class="text-muted">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    Pilih jenis tanaman untuk melihat perkiraan waktu panen
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Description -->
-                    <div class="mb-4">
-                        <label for="description" class="form-label fw-bold">Catatan/Deskripsi</label>
-                        <textarea class="form-control" 
-                                  id="description" 
-                                  name="description" 
-                                  rows="4" 
-                                  placeholder="Tambahkan catatan khusus untuk tanaman ini (opsional)..."></textarea>
-                        <div class="form-text">Contoh: varietas benih, lokasi penanaman, tujuan khusus, dll.</div>
-                    </div>
-                    
-                    <!-- Plant Care Preview -->
-                    <div class="mb-4">
-                        <h5 class="fw-bold text-success">Tahapan Perawatan</h5>
-                        <div id="careStages" class="row">
-                            <div class="col-12 text-muted text-center p-4">
-                                <i class="fas fa-seedling fa-2x mb-2"></i>
-                                <p>Pilih jenis tanaman untuk melihat tahapan perawatan</p>
+
+                        <!-- Description -->
+                        <div class="mb-4">
+                            <label for="description" class="form-label fw-bold">Catatan/Deskripsi</label>
+                            <textarea class="form-control" id="description" name="description" rows="4"
+                                placeholder="Tambahkan catatan khusus untuk tanaman ini (opsional)..."></textarea>
+                            <div class="form-text">Contoh: varietas benih, lokasi penanaman, tujuan khusus, dll.</div>
+                        </div>
+
+                        <!-- Plant Care Preview -->
+                        <div class="mb-4">
+                            <h5 class="fw-bold text-success">Tahapan Perawatan</h5>
+                            <div id="careStages" class="row">
+                                <div class="col-12 text-muted text-center p-4">
+                                    <i class="fas fa-seedling fa-2x mb-2"></i>
+                                    <p>Pilih jenis tanaman untuk melihat tahapan perawatan</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    
-                    <!-- Action Buttons -->
-                    <div class="d-flex justify-content-between">
-                        <a href="/dashboard" class="btn btn-outline-secondary btn-lg">
-                            <i class="fas fa-arrow-left me-2"></i>
-                            Kembali
-                        </a>
-                        <button type="submit" class="btn btn-success btn-lg">
-                            <i class="fas fa-check me-2"></i>
-                            Mulai Menanam
-                        </button>
-                    </div>
-                </form>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex justify-content-between">
+                            <a href="/dashboard" class="btn btn-outline-secondary btn-lg">
+                                <i class="fas fa-arrow-left me-2"></i>
+                                Kembali
+                            </a>
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fas fa-check me-2"></i>
+                                Mulai Menanam
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<script>
-document.getElementById('plantType').addEventListener('change', function() {
-    const selectedOption = this.options[this.selectedIndex];
-    const startDateInput = document.getElementById('startDate');
-    const harvestInfo = document.getElementById('harvestInfo');
-    const careStages = document.getElementById('careStages');
-    
-    if (selectedOption.value) {
-        const duration = parseInt(selectedOption.dataset.duration);
-        const startDate = new Date(startDateInput.value);
-        const harvestDate = new Date(startDate);
-        harvestDate.setDate(harvestDate.getDate() + duration);
-        
-        // Update harvest info
-        harvestInfo.innerHTML = `
+    <script>
+        document.getElementById('plantType').addEventListener('change', function () {
+            const selectedOption = this.options[this.selectedIndex];
+            const startDateInput = document.getElementById('startDate');
+            const harvestInfo = document.getElementById('harvestInfo');
+            const careStages = document.getElementById('careStages');
+
+            if (selectedOption.value) {
+                const duration = parseInt(selectedOption.dataset.duration);
+                const startDate = new Date(startDateInput.value);
+                const harvestDate = new Date(startDate);
+                harvestDate.setDate(harvestDate.getDate() + duration);
+
+                // Update harvest info
+                harvestInfo.innerHTML = `
             <div class="d-flex align-items-center">
                 <i class="fas fa-calendar-check text-success me-2"></i>
-                <strong>Perkiraan panen: ${harvestDate.toLocaleDateString('id-ID', { 
-                    weekday: 'long', 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
+                <strong>Perkiraan panen: ${harvestDate.toLocaleDateString('id-ID', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
                 })}</strong>
             </div>
             <small class="text-muted">(${duration} hari dari tanggal mulai tanam)</small>
         `;
-        
-        // Update care stages
-        const stages = [
-            { name: 'Pembibitan', days: '1-7', icon: 'seed', color: 'primary' },
-            { name: 'Pindah Tanam', days: '7-10', icon: 'seedling', color: 'info' },
-            { name: 'Larutan Nutrisi', days: '10-' + Math.floor(duration * 0.7), icon: 'tint', color: 'warning' },
-            { name: 'Penanaman', days: Math.floor(duration * 0.7) + '-' + Math.floor(duration * 0.9), icon: 'leaf', color: 'success' },
-            { name: 'Panen', days: Math.floor(duration * 0.9) + '-' + duration, icon: 'cut', color: 'danger' }
-        ];
-        
-        careStages.innerHTML = stages.map(stage => `
+
+                // Update care stages
+                const stages = [
+                    { name: 'Pembibitan', days: '1-7', icon: 'seed', color: 'primary' },
+                    { name: 'Pindah Tanam', days: '7-10', icon: 'seedling', color: 'info' },
+                    { name: 'Larutan Nutrisi', days: '10-' + Math.floor(duration * 0.7), icon: 'tint', color: 'warning' },
+                    { name: 'Penanaman', days: Math.floor(duration * 0.7) + '-' + Math.floor(duration * 0.9), icon: 'leaf', color: 'success' },
+                    { name: 'Panen', days: Math.floor(duration * 0.9) + '-' + duration, icon: 'cut', color: 'danger' }
+                ];
+
+                careStages.innerHTML = stages.map(stage => `
             <div class="col-md-2 col-4 mb-3">
                 <div class="text-center">
                     <div class="bg-${stage.color} text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width: 50px; height: 50px;">
@@ -138,27 +129,27 @@ document.getElementById('plantType').addEventListener('change', function() {
                 </div>
             </div>
         `).join('');
-        
-    } else {
-        harvestInfo.innerHTML = `
+
+            } else {
+                harvestInfo.innerHTML = `
             <i class="fas fa-info-circle me-2"></i>
             Pilih jenis tanaman untuk melihat perkiraan waktu panen
         `;
-        
-        careStages.innerHTML = `
+
+                careStages.innerHTML = `
             <div class="col-12 text-muted text-center p-4">
                 <i class="fas fa-seedling fa-2x mb-2"></i>
                 <p>Pilih jenis tanaman untuk melihat tahapan perawatan</p>
             </div>
         `;
-    }
-});
+            }
+        });
 
-// Update harvest date when start date changes
-document.getElementById('startDate').addEventListener('change', function() {
-    const plantTypeSelect = document.getElementById('plantType');
-    if (plantTypeSelect.value) {
-        plantTypeSelect.dispatchEvent(new Event('change'));
-    }
-});
-</script>
+        // Update harvest date when start date changes
+        document.getElementById('startDate').addEventListener('change', function () {
+            const plantTypeSelect = document.getElementById('plantType');
+            if (plantTypeSelect.value) {
+                plantTypeSelect.dispatchEvent(new Event('change'));
+            }
+        });
+    </script>

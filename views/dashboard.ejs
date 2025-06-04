@@ -1,13 +1,3 @@
-<% const renderedBody = include('partials/dashboard-body', { 
-    plants, 
-    dailyTasks, 
-    currentMonth, 
-    selectedDate 
-}); %>
+<% const renderedBody=include('partials/dashboard-body', { plants, dailyTasks, currentMonth, selectedDate }); %>
 
-<%- include('layouts/main', {
-    title: 'Dashboard',
-    showSidebar: true,
-    active: 'dashboard',
-    body: renderedBody
-}) %>
+    <%- include('layouts/main', { title: 'Dashboard' , showSidebar: true, active: 'dashboard' , body: renderedBody }) %>
